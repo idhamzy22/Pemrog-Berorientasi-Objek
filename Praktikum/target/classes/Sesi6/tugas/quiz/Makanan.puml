@@ -1,0 +1,27 @@
+@startuml
+
+class Makanan {
+    - String nama
+    - int stok
+    - int hargaSatuan
+    - int hargaTotal
+    
+    + Makanan(String nama, int stok, int hargaSatuan)
+    + String getNama()
+    + void setNama(String nama)
+    + int getStok()
+    + void setStok(int stok)
+    + int getHargaSatuan()
+    + void setHargaSatuan(int hargaSatuan)
+    + int getHargaTotal()
+    - void updateHargaTotal()
+}
+
+class MainMakanan {
+    + void main(String[] args)
+    + void tampilkanMakanan(Makanan makanan)
+}
+
+MainMakanan --> Makanan
+
+@enduml

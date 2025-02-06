@@ -1,0 +1,43 @@
+@startuml
+
+class Mahasiswa {
+    - nama : String
+    - nim : String
+    - dosenWali : Dosen
+    - mataKuliahList : List<MataKuliah>
+    
+    + getNama() : String
+    + getNim() : String
+    + setDosenWali(Dosen) : void
+    + addMataKuliah(MataKuliah) : void
+    + displayInfo() : void
+}
+
+class Dosen {
+    - nama : String
+    - nip : String
+    - mahasiswaWaliList : List<Mahasiswa>
+    
+    + getNama() : String
+    + getNip() : String
+    + tambahMahasiswa(Mahasiswa) : void
+    + displayInfo() : void
+}
+
+class MataKuliah {
+    - nama : String
+    - kode : String
+    - mahasiswaList : List<Mahasiswa>
+    
+    + getNama() : String
+    + getKode() : String
+    + addMahasiswa(Mahasiswa) : void
+    + displayInfo() : void
+}
+
+Mahasiswa "1" --> "0..*" MataKuliah
+Mahasiswa "1" --> "0..1" Dosen
+Dosen "1" --> "0..*" Mahasiswa
+MataKuliah "1" --> "0..*" Mahasiswa
+
+@enduml

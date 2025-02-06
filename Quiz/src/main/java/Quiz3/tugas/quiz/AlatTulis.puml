@@ -1,0 +1,20 @@
+@startuml
+class AlatTulis {
+    - nama: String
+    - stok: int
+    - hargaSatuan: int
+    - hargaTotal: int
+
+    + setNama(nama: String): void
+    + setStok(stok: int): void
+    + setHargaSatuan(hargaSatuan: int): void
+    + getNama(): String
+    + getStok(): int
+    + getHargaSatuan(): int
+    + getHargaTotal(): int
+    - hitungHargaTotal(): void
+    + tampilkanInfo(): void
+    + {static} hitungTotalHarga(items: AlatTulis[]): int
+}
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+class Mahasiswa {
+    - nama: String
+    - nim: String
+    - usia: int
+    - jurusan: Jurusan
+    --
+    + getNama(): String
+    + getNim(): String
+    + getUsia(): int
+    + setNama(String)
+    + setNim(String)
+    + setUsia(int)
+    + getJurusan(): Jurusan
+    + setJurusan(Jurusan)
+}
+
+class Jurusan {
+    - nama: String
+    - kode: String
+}
+
+Mahasiswa --> Jurusan
+@enduml

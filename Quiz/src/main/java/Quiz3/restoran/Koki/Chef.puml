@@ -1,0 +1,58 @@
+@startuml
+
+package restoran.Koki {
+
+    class Chef {
+        - String nama
+        - String id
+        - List<Customer> customerList
+        
+        + Chef(String nama, String id)
+        + String getNama()
+        + String getId()
+        + void tambahCustomer(Customer customer)
+        + void displayInfo()
+    }
+
+    class Customer {
+        - String nama
+        - String id
+        - Chef chef
+        - List<Menu> menuList
+
+        + Customer(String nama, String id)
+        + String getNama()
+        + String getId()
+        + Chef getChef()
+        + void setChef(Chef chef)
+        + void addMenu(Menu menu)
+        + void displayInfo()
+    }
+
+    class Menu {
+        - String nama
+        - String kode
+        - List<Customer> customerList
+        
+        + Menu(String nama, String kode)
+        + String getNama()
+        + String getKode()
+        + void addCustomer(Customer customer)
+        + void displayInfo()
+    }
+
+    class MainChef {
+        + main(String[] args)
+    }
+
+    Chef "1" *-- "0..*" Customer : "melayani"
+    Customer "0..*" *-- "1" Chef : "dilayani oleh"
+    Customer "0..*" *-- "0..*" Menu : "memesan"
+    Menu "0..*" *-- "0..*" Customer : "dipesan oleh"
+    
+    MainChef ..> Chef : "menggunakan"
+    MainChef ..> Customer : "menggunakan"
+    MainChef ..> Menu : "menggunakan"
+}
+
+@enduml

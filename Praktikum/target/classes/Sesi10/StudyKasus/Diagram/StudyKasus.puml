@@ -1,0 +1,56 @@
+@startuml
+
+' Abstract class Karyawan
+abstract class Karyawan {
+    - String nama
+    - double gajiPokok
+    {abstract} double hitungGaji()
+    + String getNama()
+}
+
+' Interface Tunjangan
+interface Tunjangan {
+    + double hitungTunjangan()
+}
+
+' Class Manager
+class Manager {
+    - double tunjanganJabatan
+    + Manager(String nama, double gajiPokok, double tunjanganJabatan)
+    + double hitungGaji()
+}
+
+' Class Staff
+class Staff {
+    - double tunjanganTetap
+    + Staff(String nama, double gajiPokok, double tunjanganTetap)
+    + double hitungGaji()
+}
+
+' Class Freelancer
+class Freelancer {
+    - double tarifPerJam
+    - int jumlahJam
+    + Freelancer(String nama, double tarifPerJam, int jumlahJam)
+    + double hitungGaji()
+}
+
+' Final Class GajiKaryawanCetak
+class GajiKaryawanCetak <<final>> {
+    + static void cetakGaji(Karyawan[] karyawanList)
+    + static double hitungTotalGaji(Karyawan[] karyawanList)
+}
+
+' Relasi Abstract Class -> Subclasses
+Karyawan <|-- Manager
+Karyawan <|-- Staff
+Karyawan <|-- Freelancer
+
+' Relasi Interface -> Implementasi
+Tunjangan <|.. Manager
+Tunjangan <|.. Staff
+
+' Relasi GajiKaryawanCetak menggunakan Karyawan
+GajiKaryawanCetak ..> Karyawan : uses
+
+@enduml

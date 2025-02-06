@@ -1,0 +1,28 @@
+@startuml
+
+package restoran.Customer {
+    
+    class Customer2 {
+        - String nama
+        - String id
+        - int usia
+        
+        + Customer2(String nama, String id, int usia)
+        + String getNama()
+        + void setNama(String nama)
+        + String getId()
+        + void setId(String id)
+        + int getUsia()
+        + void setUsia(int usia)
+        + void displayInfo()
+    }
+    
+    class MainCustomer {
+        + main(String[] args)
+    }
+
+    MainCustomer ..> Customer2 : "menggunakan"
+
+}
+
+@enduml

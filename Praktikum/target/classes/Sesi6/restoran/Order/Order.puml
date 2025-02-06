@@ -1,0 +1,26 @@
+@startuml
+
+package restoran.Order {
+
+    class Order {
+        - Customer2 customer
+        - List<Menu2> menuList
+
+        + Order(Customer2 customer)
+        + void addMenu(Menu2 menu)
+        + void displayInfo()
+    }
+
+    class MainOrder {
+        + main(String[] args)
+    }
+
+    Order "1" *-- "1" Customer2 : "dimiliki oleh"
+    Order "0..*" *-- "0..*" Menu2 : "berisi"
+    
+    MainOrder ..> Order : "menggunakan"
+    MainOrder ..> Customer2 : "menggunakan"
+    MainOrder ..> Menu2 : "menggunakan"
+}
+
+@enduml

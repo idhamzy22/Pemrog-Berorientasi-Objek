@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+class Mahasiswa {
+    - nama: String
+    - nim: String
+    - usia: int
+    - jurusan: Jurusan
+    - kelas: List<Kelas>
+    --
+    + getNama(): String
+    + getKelas(): List<Kelas>
+    + addKelas(Kelas)
+}
+
+class Kelas {
+    - namaKelas: String
+    - kodeKelas: String
+}
+
+class "Association (Mahasiswa - Kelas)" as Association {
+    Mahasiswa memiliki banyak Kelas
+    Kelas memiliki banyak Mahasiswa
+}
+
+Mahasiswa -down-> Association : "Many-to-Many"
+Association -- Kelas
+@enduml

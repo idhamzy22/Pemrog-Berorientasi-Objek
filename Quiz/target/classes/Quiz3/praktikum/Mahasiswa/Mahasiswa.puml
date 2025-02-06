@@ -1,0 +1,14 @@
+@startuml
+class Mahasiswa {
+    - nama: String
+    - nim: String
+    - usia: int
+    --
+    + getNama(): String
+    + getNim(): String
+    + getUsia(): int
+    + setNama(String)
+    + setNim(String)
+    + setUsia(int)
+}
+@enduml

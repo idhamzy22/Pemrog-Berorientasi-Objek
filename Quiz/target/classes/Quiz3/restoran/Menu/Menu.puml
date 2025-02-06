@@ -1,0 +1,24 @@
+@startuml
+
+package restoran.Menu {
+
+    class Menu2 {
+        - String nama
+        - String kode
+        - double harga
+
+        + Menu2(String nama, String kode, double harga)
+        + String getNama()
+        + String getKode()
+        + double getHarga()
+        + void displayInfo()
+    }
+
+    class MainMenu2 {
+        + main(String[] args)
+    }
+
+    MainMenu2 ..> Menu2 : "menggunakan"
+}
+
+@enduml

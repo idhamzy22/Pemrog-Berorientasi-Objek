@@ -1,0 +1,52 @@
+@startuml
+
+' Abstract class BangunDatar
+abstract class BangunDatar {
+    - double luas
+    - double keliling
+    {abstract} void hitungLuas()
+    {abstract} void hitungKeliling()
+}
+
+' Interface TampilHasil
+interface TampilHasil {
+    + void tampilHasil()
+}
+
+' Class Persegi
+class Persegi {
+    - double sisi
+    + Persegi(double sisi)
+    + void hitungLuas()
+    + void hitungKeliling()
+    + void tampilHasil()
+}
+
+' Class PersegiPanjang
+class PersegiPanjang {
+    - double panjang
+    - double lebar
+    + PersegiPanjang(double panjang, double lebar)
+    + void hitungLuas()
+    + void hitungKeliling()
+    + void tampilHasil()
+}
+
+' Final Class BangunDatarCetak
+class BangunDatarCetak <<final>> {
+    + static void cetakSemua(BangunDatar[] bd)
+    + static void cetakTotalLuas(BangunDatar[] bd)
+}
+
+' Hubungan Abstract Class dengan Class Turunan
+BangunDatar <|-- Persegi
+BangunDatar <|-- PersegiPanjang
+
+' Hubungan Interface dengan Class Implementasi
+TampilHasil <|.. Persegi
+TampilHasil <|.. PersegiPanjang
+
+' Relasi BangunDatarCetak untuk menggunakan BangunDatar
+BangunDatarCetak ..> BangunDatar : uses
+
+@enduml
